@@ -129,13 +129,14 @@ const actions = {
         });
     },
     retrieveUserData: ({ commit }) => {
-        const userId = localStorage.getItem('user-id');
+        // const userId = localStorage.getItem('user-id');
         const token = localStorage.getItem('token');
+        const email = localStorage.getItem('email');
         if(!token) return
-        axios.get('users/' + userId + '.json' + '?auth=' + token)
+        axios.get('users.json?orderBy="email"&equalTo="' + email +'"'  + '?auth=' + token)
         .then( response => {
         let data = response.data
-        // console.log(data)
+        console.log("Retrieve Data: ", data)
 
         commit('storeUser', {
             name: data.name,

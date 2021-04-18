@@ -1,10 +1,20 @@
 <template>
   <div>
+    <div v-if="!checkifAuth" class="col-6 mx-auto text-center">
+      <h5 class="mb-3">Hi There, kindly Login or Register to purchase stocks...</h5>
+      <router-link to="/signin" class="btn btn-outline-primary mx-2" tag="button" active-class="active">
+          Login
+      </router-link>
+      <router-link to="/signup" class="btn btn-info mx-2" tag="button" active-class="active">
+          Register
+      </router-link>
+    </div>
     <!-- <h3>Hello, {{ user.name }} </h3> -->
-    <h1>Trade or View your Portfolio</h1>
-    <p><b>You may Save or Load your Data</b></p>
-    <p><b>Hello {{ getUserInfo }} - Click on "End day" to begin a New Day</b></p>
-
+    <div v-else>
+      <h1>Trade or View your Portfolio</h1>
+      <p><b>You may Save or Load your Data</b></p>
+      <p><b>Hello {{ getUserInfo }} - Click on "End day" to begin a New Day</b></p>
+    </div>
   </div>
 </template>
 
@@ -29,6 +39,11 @@ export default {
       } else {
         return this.user.name
       }
+    },
+    checkifAuth() {
+      let check = this.$store.getters['auth/isAuthenticated'];
+      console.log(check);
+      return check;
     }
   },
   methods: {
