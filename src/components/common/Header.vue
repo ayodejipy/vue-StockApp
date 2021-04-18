@@ -24,6 +24,7 @@
                             <a class="nav-link">Register</a>
                         </router-link>
                     </ul>
+                    {{ checkifAuth }}
                     
                 </div>
                 <div>
@@ -108,7 +109,11 @@ export default {
             return this.$store.dispatch('loadData');
         },
         logout() {
-            return this.$store.dispatch['auth/signout'];
+            this.$store.dispatch['auth/signout'];
+            localStorage.removeItem('email')
+            localStorage.removeItem('token')
+            localStorage.removeItem('user-id')
+            return
         }
     },
     // beforeDestroy() {

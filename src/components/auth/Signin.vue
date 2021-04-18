@@ -7,7 +7,7 @@
                 <div class="form-group" :class="{ 'form-group--error': $v.user.email.$error }">
                     <label class="form__label">Email</label>
                     <input class="form__input form-control" @blur="$v.user.email.$touch()" v-model="user.email"/>
-                    <div class="error" v-if="!$v.user.email.email">Please provide a valid email address.</div>
+                    <div class="error" v-if="!$v.user.email.email && $v.dirty()">Please provide a valid email address.</div>
                 </div>
 
                 <div class="form-group" :class="{ 'form-group--error': $v.user.password.$error }">

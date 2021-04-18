@@ -42,7 +42,7 @@ export default {
     },
     checkifAuth() {
       let check = this.$store.getters['auth/isAuthenticated'];
-      console.log(check);
+      console.log("isAuth? ", check);
       return check;
     }
   },

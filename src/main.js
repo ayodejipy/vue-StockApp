@@ -28,6 +28,8 @@ Vue.filter('formatCurrency', (value) => {
   return formatter.format(value);
 });
 
+
+
 new Vue({
   router,
   store,

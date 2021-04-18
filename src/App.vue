@@ -26,7 +26,6 @@ export default {
     this.$store.dispatch('createStocks')
 
     this.$store.dispatch('auth/autoLogin', { root: true })
-    this.$store.dispatch('auth/retrieveUserData', { root: true })
   }
 }
 </script>

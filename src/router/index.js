@@ -58,15 +58,16 @@ router.beforeEach((to, from, next) => {
   // Check each route object and return true where the record requires an auth
   if(to.matched.some( record => record.meta.requiresAuth )) {
     
-    let token = store.getters['auth/isAuthenticated']
+    let auth = store.getters['auth/isAuthenticated']
+    console.log("from router level", auth)
     
-    if(!token ) {
+    if( auth ) {
+      next()
+    } else {
       next({
         path: '/signin',
         query: { redirect: to.fullPath }
       })
-    } else {
-      next()
     }
   } else {
     // Pass to the next function

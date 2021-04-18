@@ -109,12 +109,12 @@ const actions = {
     },
     signout: ({ commit }) => {
         commit('clearAuthData')
-        // Delete off our credentials from localStorage
-        localStorage.removeItem('token')
-        localStorage.removeItem('user-id')
-        localStorage.removeItem('email')
+        // Delete off our credentials from localStorage, done this in our header component
+        // localStorage.removeItem('token')
+        // localStorage.removeItem('user-id')
+        // localStorage.removeItem('email')
 
-        router.replace('/')
+        router.replace('/signin')
     },
     autoLogin: ({ commit }) => {
         const token = localStorage.getItem('token');
@@ -127,22 +127,6 @@ const actions = {
             userId: userId,
             idToken: userToken
         });
-    },
-    retrieveUserData: ({ commit }) => {
-        // const userId = localStorage.getItem('user-id');
-        const token = localStorage.getItem('token');
-        const email = localStorage.getItem('email');
-        if(!token) return
-        axios.get('users.json?orderBy="email"&equalTo="' + email +'"'  + '?auth=' + token)
-        .then( response => {
-        let data = response.data
-        console.log("Retrieve Data: ", data)
-
-        commit('storeUser', {
-            name: data.name,
-            email: data.email
-        })
-      })
     }
 };
 
