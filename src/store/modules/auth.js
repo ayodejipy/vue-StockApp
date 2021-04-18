@@ -109,7 +109,7 @@ const actions = {
     },
     signout: ({ commit }) => {
         commit('clearAuthData')
-        // Delete off our credentials from localStorage, done this in our header component
+        // Delete off our credentials from localStorage, done this in our header 
         // localStorage.removeItem('token')
         // localStorage.removeItem('user-id')
         // localStorage.removeItem('email')

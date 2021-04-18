@@ -28,6 +28,18 @@ Vue.filter('formatCurrency', (value) => {
   return formatter.format(value);
 });
 
+// Global response interceptor to redirect users to login page when token expires
+axios.interceptors.response.use( undefined, function(error) {
+  if(error) {
+    const originalRequest = error.config
+    // console.log(originalRequest)
+    if( error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+      store.dispatch('auth/signout', { root: true })
+      return
+    }
+  }
+})
 
 
 new Vue({
