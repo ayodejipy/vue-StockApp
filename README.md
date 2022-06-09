@@ -1,5 +1,8 @@
 # stock-app
 
+# Demo
+https://vue-stock-fictional.netlify.app/signin
+
 ## Project setup
 ```
 npm install
